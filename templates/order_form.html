@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+  <h1>Place Your Order</h1>
+  <a href="/"><button>Home</button></a>
+  <div>
+    <form action="orderform" method="POST">
+        {% csrf_token %}
+         <label>Select Seller</label>
+        <br>
+    <select name="ssl">
+      <option selected disabled="true"> --Seller-- </option>
+         {% for seller in seller %}
+      <option>{{ seller.seller_name }} </option>
+      {% endfor %}
+    </select>
+        <br>
+        <label>Select Order</label>
+        <br>
+         {% for product in product %}
+    <input type="checkbox" id="{{product.id}}c1" name="checking" value="{{ product.name}}">{{ product.name }}<br>
+    <input type="number" id="{{product.id}}d1" name="quan"><br>
+      {% endfor %}
+        <br>
+     <input type="date" class="form-control" id="exampleFormControlInput4" name="orddate" placeholder="Order Date">
+        <br>
+        <input type="number" name="ordcost" placeholder="Cost">
+        <br>
+      <button type="submit">submit</button>
+
+      </form>
+      </div>
+
+</body>
+</html>
